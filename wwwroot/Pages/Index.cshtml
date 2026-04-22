@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Saddle Volume Calculator";
+}
+
+<div class="text-center">
+    <h1 class="display-4">BSEE Volume Calculator</h1>
+    <hr />
+    <h3>Asymmetric Hyperbolic Paraboloid</h3>
+    <p class="text-muted">Formula: V = 1/4 × a × b × h</p>
+
+    <form method="post" class="mt-4 shadow-sm p-4 bg-light rounded" style="max-width: 450px; margin: auto;">
+        <div class="mb-3 text-start">
+            <label class="form-label font-weight-bold">Length (a):</label>
+            <input asp-for="LengthA" class="form-control" type="number" step="0.01" placeholder="Enter value for a" required />
+        </div>
+        <div class="mb-3 text-start">
+            <label class="form-label font-weight-bold">Width (b):</label>
+            <input asp-for="WidthB" class="form-control" type="number" step="0.01" placeholder="Enter value for b" required />
+        </div>
+        <div class="mb-3 text-start">
+            <label class="form-label font-weight-bold">Height (h):</label>
+            <input asp-for="HeightH" class="form-control" type="number" step="0.01" placeholder="Enter value for h" required />
+        </div>
+        <button type="submit" class="btn btn-success btn-lg w-100">Calculate Volume</button>
+    </form>
+
+    @if (Model.Result.HasValue)
+    {
+        <div class="alert alert-primary mt-4 py-3">
+            <h4 class="mb-0">Total Volume: <strong>@Model.Result.Value.ToString("F2")</strong> cubic units</h4>
+        </div>
+    }
+</div>
